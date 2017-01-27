@@ -16,3 +16,7 @@ def detail(request, pk):
     return render(request, 'polls/detail.html', {
         'question': obj
     })
+
+
+def vote(request, pk):
+    pass
