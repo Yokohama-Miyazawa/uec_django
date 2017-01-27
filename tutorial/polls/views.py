@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.utils.html import mark_safe
 from django.shortcuts import get_object_or_404
+from django.shortcuts import redirect
 
-from .models import Question
+from .models import Question, Choice
 
 
 def index(request):
@@ -16,3 +17,7 @@ def detail(request, pk):
     return render(request, 'polls/detail.html', {
         'question': obj
     })
+
+
+def vote(request, pk):
+    pass
