@@ -10,6 +10,7 @@ class ChoiceInline(admin.StackedInline):
 
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline]
+    list_display = ('pk', 'question_text', 'pub_date')
 
 
 admin.site.register(Question, QuestionAdmin)
