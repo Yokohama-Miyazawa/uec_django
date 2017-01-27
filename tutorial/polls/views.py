@@ -5,11 +5,7 @@ from django.shortcuts import redirect
 
 from .models import Question, Choice
 
-
-def index(request):
-    return render(request, 'polls/index.html', {
-        'questions': Question.objects.all()
-    })
+from django.views.generic import DetailView, ListView
 
 
 def detail(request, pk):
@@ -34,8 +30,17 @@ def vote(request, pk):
         return redirect('polls:results', pk)
 
 
-def results(request, pk):
-    obj = get_object_or_404(Question, pk=pk)
-    return render(request, 'polls/results.html', {
-        'question': obj
-    })
+class Index(ListView):
+    template_name = 'polls/index.html'
+    queryset = Question.objects.all()
+    context_object_name = 'questions'
+
+
+class Results(DetailView):
+    template_name = 'polls/results.html'
+    model = Question
+    context_object_name = 'question'
+
+
+index = Index.as_view()
+results = Results.as_view()
