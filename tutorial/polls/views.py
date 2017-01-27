@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.utils.html import mark_safe
+from django.shortcuts import Http404
 
 from .models import Question
 
@@ -11,6 +12,10 @@ def index(request):
 
 
 def detail(request, pk):
+    try:
+        obj = Question.objects.get(pk=pk)
+    except Question.DoesNotExist:
+        raise Http404
     return render(request, 'polls/detail.html', {
-        'question': Question.objects.get(pk=pk)
+        'question': obj
     })
