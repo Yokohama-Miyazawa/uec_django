@@ -1,2 +1,2 @@
 # uec_django  
-djagnoのサンプルコードです。
+djangoのサンプルコードです。
