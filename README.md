@@ -1,0 +1,2 @@
+# uec_django  
+djagnoのサンプルコードです。
