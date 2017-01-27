@@ -12,7 +12,7 @@
       </p></strong>
     {% endif %}
 
-    <form action="****" method=post>
+    <form action="{% url 'poll_vote' question.id %}" method="POST">
       {% csrf_token %}
       {% for choice in question.choice_set.all %}
       <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
