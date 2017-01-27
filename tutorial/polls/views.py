@@ -6,6 +6,14 @@ from django.shortcuts import redirect
 from .models import Question, Choice
 
 from django.views.generic import DetailView, ListView
+from .forms import MyForm
+
+
+def form_test(request):
+    form = MyForm()
+    return render(request, 'polls/form.html', {
+        'form': form
+    })
 
 
 def detail(request, pk):
