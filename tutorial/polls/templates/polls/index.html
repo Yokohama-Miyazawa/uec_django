@@ -5,14 +5,13 @@
   </head>
   <body>
     <table border="1">
-      <tr><th>見出しその1</th><th>見出しその2</th></tr>
+      <tr><th>質問内容</th><th>リンク</th></tr>
+      {% for question in questions %}
       <tr>
-        <td>中身1</td>
+        <td>{{ question.question_text }}</td>
         <td>中身2</td>
       </tr>
+      {% endfor %}
     </table>
-    <br> {{ hoge }}
-    <br> {{ fuga }}
-    <br> {{ piyo }}
   </body>
 </html>
