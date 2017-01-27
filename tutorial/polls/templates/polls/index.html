@@ -9,7 +9,7 @@
       {% for question in questions %}
       <tr>
         <td>{{ question.question_text }}</td>
-        <td><a href="{% url 'poll_detail' question.pk %}">投票画面へ</a></td>
+        <td><a href="{% url 'polls:detail' question.pk %}">投票画面へ</a></td>
       </tr>
       {% endfor %}
     </table>
