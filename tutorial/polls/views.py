@@ -10,9 +10,18 @@ from .forms import MyForm
 
 
 def form_test(request):
-    form = MyForm()
+    if request.method == "POST":
+        form = MyForm(data=request.POST)
+        if form.is_valid():
+            message = '入力された内容は「'+form.cleaned_data['text']+'」です。'
+        else:
+            message = '無効なデータです。'
+    else:
+        form = MyForm()
+        message = '文字を入力してください。'
     return render(request, 'polls/form.html', {
-        'form': form
+        'form': form,
+        'message': message,
     })
 
 
