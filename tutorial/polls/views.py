@@ -1,5 +1,5 @@
-from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse("テストです。Viewがレスポンスを直接返してます。")
+    return render(request, 'polls/index.html')
