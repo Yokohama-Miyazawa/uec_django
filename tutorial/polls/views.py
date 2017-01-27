@@ -20,4 +20,15 @@ def detail(request, pk):
 
 
 def vote(request, pk):
-    pass
+    question = get_object_or_404(Question, pk=pk)
+    try:
+        selected_choice = question.choice_set.get(pk=request.POST['choice'])
+    except (KeyError, Choice.DoesNotExist):
+        return render(request, 'polls/detail.html', {
+         'question': question,
+         'error_message': "選択肢が何も選ばれていません。",
+        })
+    else:
+        selected_choice.votes += 1
+        selected_choice.save()
+        return redirect('index')
