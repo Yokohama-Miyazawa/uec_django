@@ -6,7 +6,7 @@ from django.shortcuts import redirect
 from .models import Question, Choice
 
 from django.views.generic import DetailView, ListView
-from .forms import MyForm
+from .forms import MyForm, VoteForm
 
 
 def form_test(request):
@@ -27,8 +27,10 @@ def form_test(request):
 
 def detail(request, pk):
     obj = get_object_or_404(Question, pk=pk)
+    form = VoteForm(question=obj)
     return render(request, 'polls/detail.html', {
-        'question': obj
+        'form': form,
+        'question': obj,
     })
 
 
