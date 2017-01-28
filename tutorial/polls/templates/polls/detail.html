@@ -2,22 +2,19 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <style>  /*「・」を消すためにCSSを利用*/
+      li{
+        list-style:none;
+      }
+    </style>
   </head>
   <body>
     <h1>{{ question.question_text }}</h1>
-
-    {% if error_message %}
-      <p><strong>
-        {{ error_message }}
-      </p></strong>
-    {% endif %}
-
-    <form action="{% url 'polls:vote' question.id %}" method="POST">
+    <form action="" method="POST">
       {% csrf_token %}
       {{ form }}
       <input type="submit" Value="Vote" />
     </form>
-
     <a href="{% url 'polls:index' %}">一覧画面へ</a><br />
   </body>
 </html>
