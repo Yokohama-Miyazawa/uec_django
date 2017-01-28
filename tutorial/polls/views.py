@@ -30,7 +30,7 @@ def detail(request, pk):
     if request.method == "POST":
         form = VoteForm(question=obj, data=request.POST)
         if form.is_valid():
-            # 投票処理をここに書く
+            form.vote()
             return redirect('polls:results', pk)
     else:
         form = VoteForm(question=obj)
