@@ -4,6 +4,9 @@ from django import forms
 class MyForm(forms.Form):  # チュートリアル5-3終了時
     text = forms.CharField(max_length=100, required=False, label='テキスト')
 
+    def output(self):
+        return '入力された内容は「'+self.cleaned_data['text']+'」です。'
+
 
 class VoteForm(forms.Form):
     choice = forms.ModelChoiceField(
