@@ -1,7 +1,7 @@
 from django import forms
 
 
-class MyForm(forms.Form):
+class MyForm(forms.Form):  # チュートリアル5-3終了時
     text = forms.CharField(max_length=100, required=False, label='テキスト')
 
 

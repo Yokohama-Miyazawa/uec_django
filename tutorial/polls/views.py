@@ -9,7 +9,7 @@ from django.views.generic import DetailView, ListView
 from .forms import MyForm, VoteForm
 
 
-def form_test(request):
+def form_test(request):  # チュートリアル5-3終了時
     if request.method == "POST":
         form = MyForm(data=request.POST)
         if form.is_valid():
