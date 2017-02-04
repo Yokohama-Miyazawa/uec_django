@@ -2,27 +2,18 @@ from django.shortcuts import render
 from django.utils.html import mark_safe
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
+from django.core.urlresolvers import reverse_lazy  # reverse_lazy追加
 
 from .models import Question, Choice
 
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, FormView  # FormView追加
 from .forms import MyForm, VoteForm
 
 
-def form_test(request):
-    if request.method == "POST":
-        form = MyForm(data=request.POST)
-        if form.is_valid():
-            message = '入力された内容は「'+form.cleaned_data['text']+'」です。'
-        else:
-            message = '無効なデータです。'
-    else:
-        form = MyForm()
-        message = '文字を入力してください。'
-    return render(request, 'polls/form.html', {
-        'form': form,
-        'message': message,
-    })
+class FormTest(FormView):  # FormTest Class を作成。form_test関数は削除
+    form_class = MyForm  # 使う Form Class を指定
+    template_name = 'polls/form.html'  # 使うTemplateを指定
+    success_url = reverse_lazy('polls:index')  # POST成功時に飛ぶ先を指定
 
 
 def detail(request, pk):
@@ -51,6 +42,6 @@ class Results(DetailView):
     model = Question
     context_object_name = 'question'
 
-
+form_test = FormTest.as_view()  # form_test関数の代わりにこのメソッドの返り値を返す
 index = Index.as_view()
 results = Results.as_view()
