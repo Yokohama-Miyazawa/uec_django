@@ -121,3 +121,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (  # ここから追加。/staticディレクトリを読み込む様に設定。
+    os.path.join(BASE_DIR, 'static'),
+)  # ここまで追加。
