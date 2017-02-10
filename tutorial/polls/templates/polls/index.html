@@ -1,6 +1,6 @@
-{% extends "base.html" %}  <!--ここはそのまま-->
+{% extends "base.html" %}
 
-{% block contents %}  <!--このタグを追加。base.htmlのタグを対応している。-->
+{% block contents %}
     <table border="1" class="table table-striped">
       <tr><th>質問内容</th><th>リンク</th></tr>
       {% for question in questions %}
@@ -10,5 +10,4 @@
       </tr>
       {% endfor %}
     </table>
-{% endblock contents %}  <!--このタグも追加。contentsというblockの終わりであることを明示-->
-<!-- <html>, <head>, <body> 等のタグは継承元のbase.htmlにある為ここには不要。--->
+{% endblock contents %}
