@@ -1,12 +1,6 @@
-<!doctype html>
-{% extends "base.html" %}
-{% load staticfiles %}
-<html>
-  <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
-  </head>
-  <body>
+{% extends "base.html" %}  <!--ここはそのまま-->
+
+{% block contents %}  <!--このタグを追加。base.htmlのタグを対応している。-->
     <table border="1" class="table table-striped">
       <tr><th>質問内容</th><th>リンク</th></tr>
       {% for question in questions %}
@@ -16,5 +10,5 @@
       </tr>
       {% endfor %}
     </table>
-  </body>
-</html>
+{% endblock contents %}  <!--このタグも追加。contentsというblockの終わりであることを明示-->
+<!-- <html>, <head>, <body> 等のタグは継承元のbase.htmlにある為ここには不要。--->
