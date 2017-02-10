@@ -31,20 +31,19 @@ body {
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="{% url 'index' %}">Djangoチュートリアル</a>  <!--ここを追加-->
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="active"><a href="{% url 'polls:index' %}">polls(投票アプリ)</a></li>  <!--ここを追加。active属性によりハイライト表示される-->
+            <li class=""><a href="{% url 'admin:index' %}">admin(管理者サイト)</a></li>  <!--ここを追加-->
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
     <div class="container">
-      {% block contents %}{% endblock %}  <!--ここを追加。ここに各ページの内容が入る。-->
+      {% block contents %}{% endblock %}
     </div><!-- /.container -->
     <!-- Bootstrap core JavaScript
     ================================================== -->
