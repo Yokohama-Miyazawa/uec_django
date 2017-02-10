@@ -1,4 +1,5 @@
 <!doctype html>
+{% extends "base.html" %}
 {% load staticfiles %}
 <html>
   <head>
@@ -6,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
   </head>
   <body>
-    <table border="1" class="table table-striped">  <!--ここにclass属性を追加。table-stripedで縞模様の表が出来る。-->
+    <table border="1" class="table table-striped">
       <tr><th>質問内容</th><th>リンク</th></tr>
       {% for question in questions %}
       <tr>
