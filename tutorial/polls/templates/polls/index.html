@@ -1,13 +1,12 @@
 <!doctype html>
-{% load staticfiles %}  <!--ここを追加。静的ファイルを読み込める様にしている。-->
+{% load staticfiles %}
 <html>
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
-    <!--↑を追加。bootstrapで用意されたCSSファイルを読み込んでいる。-->
   </head>
   <body>
-    <table border="1">
+    <table border="1" class="table table-striped">  <!--ここにclass属性を追加。table-stripedで縞模様の表が出来る。-->
       <tr><th>質問内容</th><th>リンク</th></tr>
       {% for question in questions %}
       <tr>
