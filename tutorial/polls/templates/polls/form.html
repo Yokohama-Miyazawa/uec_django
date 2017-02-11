@@ -1,14 +1,11 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf−8">
-  </head>
-  <body>
+{% extends "polls/polls_base.html" %}
+<!-- polls_base.html を継承する-->
+{% block contents %}
     <p>{{ message }}</p>
     <form action="" method="POST">
       {% csrf_token %}
       {{ form }}
       <input type="submit" value="送信"/>
     </form>
-  </body>
-</html>
+{% endblock contents %}
+<!-- <html>, <body> などは親のTemplate(polls_base.html)にあるので不要-->
