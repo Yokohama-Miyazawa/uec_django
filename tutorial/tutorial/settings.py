@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'polls',
-    'bootstrap3',  # これを追加。
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +65,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins': [  # ここから追加
+                'bootstrap3.templatetags.bootstrap3',
+            ],  # ここまで追加
         },
     },
 ]
