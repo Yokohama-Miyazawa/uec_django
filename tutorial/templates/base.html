@@ -35,7 +35,6 @@ body {
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-                    <!--↓を修正。継承するhtmlファイルがclass属性を書き換えられる-->
             <li class="{% block nav_polls %}{% endblock %}"><a href="{% url 'polls:index' %}">polls(投票アプリ)</a></li>
             <li class=""><a href="{% url 'admin:index' %}">admin(管理者サイト)</a></li>
           </ul>
