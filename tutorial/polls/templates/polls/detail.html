@@ -1,14 +1,6 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <style>  /*「・」を消すためにCSSを利用*/
-      li{
-        list-style:none;
-      }
-    </style>
-  </head>
-  <body>
+{% extends "polls/polls_base.html" %}
+<!-- polls_base.html を継承する-->
+{% block contents %}
     <h1>{{ question.question_text }}</h1>
     <form action="" method="POST">
       {% csrf_token %}
@@ -16,5 +8,5 @@
       <input type="submit" Value="Vote" />
     </form>
     <a href="{% url 'polls:index' %}">一覧画面へ</a><br />
-  </body>
-</html>
+{% endblock contents %}
+<!-- <html>, <body> などは親のTemplate(polls_base.html)にあるので不要-->
