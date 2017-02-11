@@ -1,10 +1,10 @@
 {% extends "polls/polls_base.html" %}
-
+{% load bootstrap3 %}  <!--ここを追加。django-bootstrap3を使える様にする。-->
 {% block contents %}
     <h1>{{ question.question_text }}</h1>
     <form action="" method="POST">
       {% csrf_token %}
-      {{ form }}
+      {% bootstrap_form form %}  <!--ここを変更。formのデザインを変える-->
       <input type="submit" Value="Vote" />
     </form>
     <a href="{% url 'polls:index' %}">一覧画面へ</a><br />
