@@ -1,5 +1,5 @@
 {% extends "polls/polls_base.html" %}
-<!-- polls_base.html を継承する-->
+
 {% block contents %}
     <h1>{{ question.question_text }} -投票結果-</h1>
     <ul>
@@ -9,4 +9,3 @@
     </ul>
     <a href="{% url 'polls:detail' question.id %}">もう一度投票する</a><br />
 {% endblock contents %}
-<!-- <html>, <body> などは親のTemplate(polls_base.html)にあるので不要-->
