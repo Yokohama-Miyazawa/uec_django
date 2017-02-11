@@ -43,6 +43,9 @@ body {
     </nav>
 
     <div class="container">
+      {% if messages %}  <!--ここから追加-->
+      {% bootstrap_messages messages %}  <!--django-bootstrap3を使ってお洒落に表示-->
+      {% endif %}        <!--ここまで追加-->
       {% block contents %}{% endblock %}
     </div><!-- /.container -->
     <!-- Bootstrap core JavaScript
