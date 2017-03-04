@@ -21,6 +21,10 @@ class Question(models.Model):
     was_published_recently.boolean = True
     was_published_recently.short_discription = '24時間以内の公開'
 
+    @classmethod
+    def get_published_data(cls):  # 新たに追加したメソッド1
+        return cls.objects.filter(pub_date__lte=timezone.now())
+
 
 class Choice(models.Model):
     question = models.ForeignKey(Question)
