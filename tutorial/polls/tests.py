@@ -34,14 +34,14 @@ class PollsTest(TestCase):  # TestCaseの子クラス
     def test_was_published_recently(self):
         # 一日よりも少しだけ古い
         obj = Question(pub_date=timezone.now() - timedelta(days=1, minutes=1))
-        self.assertFalse(obj.was_published_recently())
+        self.assertFalse(obj.was_published_recently(), '一日と1分前に公開')
         # 一日よりも少しだけ新しい
         obj = Question(pub_date=timezone.now() -
                        timedelta(days=1) + timedelta(minutes=1))
-        self.assertTrue(obj.was_published_recently())
+        self.assertTrue(obj.was_published_recently(), '一日と1分後に公開')
         # つい最近公開
         obj = Question(pub_date=timezone.now() - timedelta(minutes=1))
-        self.assertTrue(obj.was_published_recently())
+        self.assertTrue(obj.was_published_recently(), '1分前に公開')
         # もうすぐ公開
         obj = Question(pub_date=timezone.now() + timedelta(minutes=1))
-        self.assertFalse(obj.was_published_recently())
+        self.assertFalse(obj.was_published_recently(), '1分後に公開')
