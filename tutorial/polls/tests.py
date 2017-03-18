@@ -24,9 +24,4 @@ class PollsTest(TestCase):  # TestCaseの子クラス
         self.assertEqual(1, func_piyo())  # func_piyoはTrueを返すか確認
 
     def test_exception(self):  # 例外が発生するかテスト
-        try:
-            func_excep()
-        except Exception:  # 例外が起きたら何もしない
-            pass
-        else:              # 例外が起きないと必ず失敗
-            self.assertTrue(False)
+        self.assertRaises(Exception, func_excep)  # 一行でOK
