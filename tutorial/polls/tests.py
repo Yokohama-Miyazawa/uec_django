@@ -1,4 +1,7 @@
 from django.test import TestCase
+from django.utils import timezone  # 現在時刻確認の為追加
+
+from .models import Question  # Question Modelに対しテストを実行する。
 
 
 def func_hoge():  # テスト対象の関数その1
@@ -25,3 +28,9 @@ class PollsTest(TestCase):  # TestCaseの子クラス
 
     def test_exception(self):  # 例外が発生するかテスト
         self.assertRaises(Exception, func_excep)  # 一行でOK
+
+    def test_was_published_recently(self):
+        obj = Question(pub_date=timezone.now())
+        self.assertTrue(obj.was_published_recently())
+    # まず質問インスタンスを一つ作り、それにwas_published_recentlyメソッド
+    # を実行する。その結果をテストする。
