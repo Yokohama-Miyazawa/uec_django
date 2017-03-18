@@ -12,4 +12,4 @@ def func_fuga():  # テスト対象の関数その2
 class PollsTest(TestCase):  # TestCaseの子クラス
     def test_func(self):  # テスト用のメソッド
         self.assertEqual(1, func_hoge())  # func_hogeは1を返すか確認
-        self.assertEqual(1, func_fuga())  # func_fugaは1を返すか確認
+        self.assertNotEqual(1, func_fuga())  # func_fugaは1以外を返すか確認
