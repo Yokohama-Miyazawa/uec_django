@@ -1,3 +1,5 @@
+from datetime import timedelta  # 時間差を測る為に追加
+
 from django.test import TestCase
 from django.utils import timezone  # 現在時刻確認の為追加
 
@@ -30,7 +32,16 @@ class PollsTest(TestCase):  # TestCaseの子クラス
         self.assertRaises(Exception, func_excep)  # 一行でOK
 
     def test_was_published_recently(self):
-        obj = Question(pub_date=timezone.now())
+        # 一日よりも少しだけ古い
+        obj = Question(pub_date=timezone.now() - timedelta(days=1, minutes=1))
+        self.assertFalse(obj.was_published_recently())
+        # 一日よりも少しだけ新しい
+        obj = Question(pub_date=timezone.now() -
+                       timedelta(days=1) + timedelta(minutes=1))
         self.assertTrue(obj.was_published_recently())
-    # まず質問インスタンスを一つ作り、それにwas_published_recentlyメソッド
-    # を実行する。その結果をテストする。
+        # つい最近公開
+        obj = Question(pub_date=timezone.now() - timedelta(minutes=1))
+        self.assertTrue(obj.was_published_recently())
+        # もうすぐ公開
+        obj = Question(pub_date=timezone.now() + timedelta(minutes=1))
+        self.assertFalse(obj.was_published_recently())
