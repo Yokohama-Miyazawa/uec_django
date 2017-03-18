@@ -24,7 +24,10 @@ class Question(models.Model):
         return self.question_text
 
     def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        return timezone.now() >= \
+               self.pub_date >= \
+               timezone.now() - datetime.timedelta(days=1)
+        # 条件に「公開日時が現在より前か」を追加
     was_published_recently.admin_order_field = 'pub_date'
     was_published_recently.boolean = True
     was_published_recently.short_discription = '24時間以内の公開'
